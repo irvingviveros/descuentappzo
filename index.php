@@ -1,5 +1,6 @@
 <?php
 require "header.php";
+require 'includes/dbh.inc.php';
 ?>
 
 <style media="screen">
@@ -344,182 +345,376 @@ require "header.php";
   </div>
   <div class="card-container-default">
     <div class="slideshow">
-      <div class="slide">
-        <div class="contenedor">
 
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
-                      </div>
-                    </a>
+      <?php
+          $actualDay = date("l");     //día actual
+          if ($actualDay == 'Monday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.dia_d = 'Lunes';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
                       </div>
-                    </a>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
-
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
-                      </div>
-                    </a>
-
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
-                      </div>
-                    </a>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Thursday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.dia_d = 'Martes';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
-
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
                       </div>
-                    </a>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
 
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
                         </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
-                      </div>
-                    </a>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
-
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
-                      </div>
-                    </a>
-
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
-                      </div>
-                    </a>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                </div>';
+                }
+            }
+          } else if($actualDay == 'Wednesday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.id_d = '3'";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-        </div>
-      </div>
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Tuesday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.dia_d = 'Jueves';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Friday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.dia_d = 'Viernes';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Saturday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.id_d = '6';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Sunday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.dia_d = 'Domingo';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          }
+       ?>
+
     </div>
   </div>
 
@@ -531,182 +726,376 @@ require "header.php";
   </div>
   <div class="card-container-default">
     <div class="slideshow">
-      <div class="slide">
-        <div class="contenedor">
 
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
-                      </div>
-                    </a>
+      <?php
+          $actualDay = date("l");     //día actual
+          if ($actualDay == 'Monday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.dia_d = 'Lunes';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
                       </div>
-                    </a>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
-
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
-                      </div>
-                    </a>
-
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
-                      </div>
-                    </a>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Thursday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.dia_d = 'Martes';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
-
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
                       </div>
-                    </a>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
 
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
                         </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
-                      </div>
-                    </a>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
-
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
-                      </div>
-                    </a>
-
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
-                      </div>
-                    </a>
                   </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                </div>';
+                }
+            }
+          } else if($actualDay == 'Wednesday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.id_d = '3'";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-        </div>
-      </div>
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Tuesday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.dia_d = 'Jueves';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Friday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.dia_d = 'Viernes';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Saturday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.id_d = '6';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          } else if ($actualDay == 'Sunday'){
+            $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.dia_d = 'Domingo';";            //consulta
+            $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+            $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+            if ($resultCheck > 0 ){                       //comprueba si hay información
+                while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                  echo '
+                  <div class="slide">
+                    <div class="contenedor">
+                  <div class="card card-s">
+                    <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                      <div class="card-header">
+                        '. $row['titulo_p'] . '
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                        <div class="list-group-item">
+                          <div class="row link-color">
+                            <a href="'. $row['face_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <i class="fab fa-facebook-square"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span>Facebook</span>
+                                </div>
+                              </div>
+                            </a>
+
+                            <a href="'. $row['dir_n'] . '" class="col">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                  <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="row justify-content-center">
+                                  <span class="link-color">Ubicación</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- FIN LIST-GROUP ITEM -->
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>';
+                }
+            }
+          }
+       ?>
+
     </div>
   </div>
 
@@ -718,182 +1107,377 @@ require "header.php";
   </div>
   <div class="card-container-default">
     <div class="slideshow">
-      <div class="slide">
-        <div class="contenedor">
 
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
+
+          <?php
+              $actualDay = date("l");     //día actual
+              if ($actualDay == 'Monday'){
+                $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.dia_d = 'Lunes';";            //consulta
+                $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+                $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+                if ($resultCheck > 0 ){                       //comprueba si hay información
+                    while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                      echo '
+                      <div class="slide">
+                        <div class="contenedor">
+                      <div class="card card-s">
+                        <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                          <div class="card-header">
+                            '. $row['titulo_p'] . '
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                            <div class="list-group-item">
+                              <div class="row link-color">
+                                <a href="'. $row['face_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span>Facebook</span>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="'. $row['dir_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                      <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span class="link-color">Ubicación</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- FIN LIST-GROUP ITEM -->
+                          </ul>
                         </div>
                       </div>
-                    </a>
+                      </div>
+                    </div>';
+                    }
+                }
+              } else if ($actualDay == 'Thursday'){
+                $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.dia_d = 'Martes';";            //consulta
+                $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+                $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+                if ($resultCheck > 0 ){                       //comprueba si hay información
+                    while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
+                      echo '
+                      <div class="slide">
+                        <div class="contenedor">
+                      <div class="card card-s">
+                        <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                          <div class="card-header">
+                            '. $row['titulo_p'] . '
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                            <div class="list-group-item">
+                              <div class="row link-color">
+                                <a href="'. $row['face_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span>Facebook</span>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="'. $row['dir_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                      <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span class="link-color">Ubicación</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- FIN LIST-GROUP ITEM -->
+                          </ul>
                         </div>
                       </div>
-                    </a>
-                  </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                      </div>
+                    </div>';
+                    }
+                }
+              } else if($actualDay == 'Wednesday'){
+                $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.id_d = '3'";            //consulta
+                $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+                $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+                if ($resultCheck > 0 ){                       //comprueba si hay información
+                    while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
+                      echo '
+                      <div class="slide">
+                        <div class="contenedor">
+                      <div class="card card-s">
+                        <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                          <div class="card-header">
+                            '. $row['titulo_p'] . '
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                            <div class="list-group-item">
+                              <div class="row link-color">
+                                <a href="'. $row['face_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span>Facebook</span>
+                                    </div>
+                                  </div>
+                                </a>
 
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
+                                <a href="'. $row['dir_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                      <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span class="link-color">Ubicación</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- FIN LIST-GROUP ITEM -->
+                          </ul>
                         </div>
                       </div>
-                    </a>
+                      </div>
+                    </div>';
+                    }
+                }
+              } else if ($actualDay == 'Tuesday'){
+                $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.dia_d = 'Jueves';";            //consulta
+                $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+                $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+                if ($resultCheck > 0 ){                       //comprueba si hay información
+                    while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
+                      echo '
+                      <div class="slide">
+                        <div class="contenedor">
+                      <div class="card card-s">
+                        <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                          <div class="card-header">
+                            '. $row['titulo_p'] . '
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                            <div class="list-group-item">
+                              <div class="row link-color">
+                                <a href="'. $row['face_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span>Facebook</span>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="'. $row['dir_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                      <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span class="link-color">Ubicación</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- FIN LIST-GROUP ITEM -->
+                          </ul>
                         </div>
                       </div>
-                    </a>
-                  </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                      </div>
+                    </div>';
+                    }
+                }
+              } else if ($actualDay == 'Friday'){
+                $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.dia_d = 'Viernes';";            //consulta
+                $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+                $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+                if ($resultCheck > 0 ){                       //comprueba si hay información
+                    while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
+                      echo '
+                      <div class="slide">
+                        <div class="contenedor">
+                      <div class="card card-s">
+                        <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                          <div class="card-header">
+                            '. $row['titulo_p'] . '
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                            <div class="list-group-item">
+                              <div class="row link-color">
+                                <a href="'. $row['face_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span>Facebook</span>
+                                    </div>
+                                  </div>
+                                </a>
 
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
+                                <a href="'. $row['dir_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                      <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span class="link-color">Ubicación</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- FIN LIST-GROUP ITEM -->
+                          </ul>
                         </div>
                       </div>
-                    </a>
+                      </div>
+                    </div>';
+                    }
+                }
+              } else if ($actualDay == 'Saturday'){
+                $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.id_d = '6';";            //consulta
+                $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+                $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+                if ($resultCheck > 0 ){                       //comprueba si hay información
+                    while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
+                      echo '
+                      <div class="slide">
+                        <div class="contenedor">
+                      <div class="card card-s">
+                        <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                          <div class="card-header">
+                            '. $row['titulo_p'] . '
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                            <div class="list-group-item">
+                              <div class="row link-color">
+                                <a href="'. $row['face_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span>Facebook</span>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="'. $row['dir_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                      <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span class="link-color">Ubicación</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- FIN LIST-GROUP ITEM -->
+                          </ul>
                         </div>
                       </div>
-                    </a>
-                  </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                      </div>
+                    </div>';
+                    }
+                }
+              } else if ($actualDay == 'Sunday'){
+                $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.dia_d = 'Domingo';";            //consulta
+                $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
+                $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
+                if ($resultCheck > 0 ){                       //comprueba si hay información
+                    while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
-        </div>
-      </div>
-      <div class="slide">
-        <div class="contenedor">
+                      echo '
+                      <div class="slide">
+                        <div class="contenedor">
+                      <div class="card card-s">
+                        <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                          <div class="card-header">
+                            '. $row['titulo_p'] . '
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                            <div class="list-group-item">
+                              <div class="row link-color">
+                                <a href="'. $row['face_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span>Facebook</span>
+                                    </div>
+                                  </div>
+                                </a>
 
-          <div class="card card-s">
-            <img class="card-img-middle img-fluid" src="images/food2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">LE VLÚ</h4>
-              <div class="card-header">
-                Hamburguesa y malteada por $73 <span></span>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-center"></i>Viernes</li>
-                <div class="list-group-item">
-                  <div class="row link-color">
-                    <a href="http://www.facebook.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
+                                <a href="'. $row['dir_n'] . '" class="col">
+                                  <div class="col">
+                                    <div class="row justify-content-center">
+                                      <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                      <span class="link-color">Ubicación</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- FIN LIST-GROUP ITEM -->
+                          </ul>
                         </div>
                       </div>
-                    </a>
-
-                    <a href="http://www.google.com" class="col">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span class="link-color">Ubicación</span>
-                        </div>
                       </div>
-                    </a>
-                  </div>
-                </div>
-                <!-- FIN LIST-GROUP ITEM -->
-              </ul>
-            </div>
-          </div>
+                    </div>';
+                    }
+                }
+              }
+           ?>
 
-        </div>
-      </div>
     </div>
   </div>
 

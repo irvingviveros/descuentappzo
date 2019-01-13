@@ -48,13 +48,13 @@
             Promociones por día
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Lunes</a>
-            <a class="dropdown-item" href="#">Martes</a>
-            <a class="dropdown-item" href="#">Miércoles</a>
-            <a class="dropdown-item" href="#">Jueves</a>
-            <a class="dropdown-item" href="#">Viernes</a>
-            <a class="dropdown-item" href="#">Sábado</a>
-            <a class="dropdown-item" href="#">Domingo</a>
+            <a class="dropdown-item" href="lunes.php">Lunes</a>
+            <a class="dropdown-item" href="martes.php">Martes</a>
+            <a class="dropdown-item" href="miercoles.php">Miércoles</a>
+            <a class="dropdown-item" href="jueves.php">Jueves</a>
+            <a class="dropdown-item" href="viernes.php">Viernes</a>
+            <a class="dropdown-item" href="sabado.php">Sábado</a>
+            <a class="dropdown-item" href="domingo.php">Domingo</a>
           </div>
         </li>
         <li class="nav-item">
