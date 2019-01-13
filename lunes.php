@@ -4,7 +4,9 @@ require 'includes/dbh.inc.php';
 ?>
 
 <body>
-<h1 class="text-center mt-3">LUNES</h1>
+  <div class="etiqueta-default etiqueta-promoDelDia mt-4">
+    <span class="etiqueta-texto">LUNES</span>
+  </div>
 
 <!-- <div class="etiqueta-default etiqueta-restaurantes" style="margin-top: 2em">
   <span class="etiqueta-texto">RESTAURANTES</span>

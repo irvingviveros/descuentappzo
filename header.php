@@ -57,7 +57,7 @@
             <a class="dropdown-item" href="domingo.php">Domingo</a>
           </div>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-white" href="#">Restaurantes</a>
         </li>
         <li class="nav-item">
@@ -65,7 +65,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="#">Postres y café</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link text-white" href="newpromo.php">Agregar promoción</a>
         </li>
