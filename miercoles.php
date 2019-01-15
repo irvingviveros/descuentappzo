@@ -4,7 +4,7 @@ require 'includes/dbh.inc.php';
 ?>
 
 <body>
-  <div class="etiqueta-default etiqueta-promoDelDia mt-4">
+  <div class="etiqueta-default bg-light mt-4">
     <span class="etiqueta-texto">MIÉRCOLES</span>
   </div>
 
@@ -30,13 +30,29 @@ require 'includes/dbh.inc.php';
 
       <?php
 
-      $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'restaurante' AND d.id_d = '3';";            //consulta
-      $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
-      $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
-      if ($resultCheck > 0 ){                       //comprueba si hay información
-          while($row = mysqli_fetch_assoc($result)){
-            echo '
+      $local = "restaurante";
+      $dia = "3";
+      //prepare a query
+      $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
+      INNER JOIN promocion AS p ON n.id_p1 = p.id_p
+      INNER JOIN dia AS d ON p.id_d1 = d.id_d
+      INNER JOIN images AS i ON p.id_i1 = i.id_i
+      WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+      //create a prepared statement
+      $stmt = mysqli_stmt_init($conn);
+      //prepare the prepared statement
+      if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL STATEMENT FAILED";
+      } else {
+          //bind parameters to the placeholder. s = string, i = integer, b = boolean
+          mysqli_stmt_bind_param($stmt, "si", $local, $dia);
+          //run parameters inside database
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
 
+          while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+            echo '
             <div class="container mt-3 pt-3 pb-3" style="background-color: #F2F2F2">
               <div class="list-group">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
@@ -53,11 +69,9 @@ require 'includes/dbh.inc.php';
                 </div>
               </div>
             </div>
-
             ';
           }
-        }
-
+      }
        ?>
     </div>
 
@@ -65,13 +79,29 @@ require 'includes/dbh.inc.php';
 
       <?php
 
-      $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'cafe' AND d.id_d = '3';";            //consulta
-      $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
-      $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
-      if ($resultCheck > 0 ){                       //comprueba si hay información
-          while($row = mysqli_fetch_assoc($result)){
-            echo '
+      $local = "cafe";
+      $dia = "3";
+      //prepare a query
+      $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
+      INNER JOIN promocion AS p ON n.id_p1 = p.id_p
+      INNER JOIN dia AS d ON p.id_d1 = d.id_d
+      INNER JOIN images AS i ON p.id_i1 = i.id_i
+      WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+      //create a prepared statement
+      $stmt = mysqli_stmt_init($conn);
+      //prepare the prepared statement
+      if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL STATEMENT FAILED";
+      } else {
+          //bind parameters to the placeholder. s = string, i = integer, b = boolean
+          mysqli_stmt_bind_param($stmt, "si", $local, $dia);
+          //run parameters inside database
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
 
+          while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+            echo '
             <div class="container mt-3 pt-3 pb-3" style="background-color: #F2F2F2">
               <div class="list-group">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
@@ -88,10 +118,9 @@ require 'includes/dbh.inc.php';
                 </div>
               </div>
             </div>
-
             ';
           }
-        }
+      }
 
        ?>
 
@@ -100,13 +129,29 @@ require 'includes/dbh.inc.php';
 
       <?php
 
-      $sql = "SELECT n.*, p.*, d.* FROM negocio AS n INNER JOIN promocion AS p ON n.id_p1 = p.id_p INNER JOIN dia AS d ON p.id_d1 = id_d WHERE n.tipo_n = 'bar' AND d.id_d = '3';";            //consulta
-      $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
-      $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
-      if ($resultCheck > 0 ){                       //comprueba si hay información
-          while($row = mysqli_fetch_assoc($result)){
-            echo '
+      $local = "bar";
+      $dia = "3";
+      //prepare a query
+      $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
+      INNER JOIN promocion AS p ON n.id_p1 = p.id_p
+      INNER JOIN dia AS d ON p.id_d1 = d.id_d
+      INNER JOIN images AS i ON p.id_i1 = i.id_i
+      WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+      //create a prepared statement
+      $stmt = mysqli_stmt_init($conn);
+      //prepare the prepared statement
+      if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL STATEMENT FAILED";
+      } else {
+          //bind parameters to the placeholder. s = string, i = integer, b = boolean
+          mysqli_stmt_bind_param($stmt, "si", $local, $dia);
+          //run parameters inside database
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
 
+          while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+            echo '
             <div class="container mt-3 pt-3 pb-3" style="background-color: #F2F2F2">
               <div class="list-group">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
@@ -123,10 +168,9 @@ require 'includes/dbh.inc.php';
                 </div>
               </div>
             </div>
-
             ';
           }
-        }
+      }
 
        ?>
 

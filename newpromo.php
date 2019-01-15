@@ -9,7 +9,7 @@ require 'includes/dbh.inc.php';
     <span class="etiqueta-texto">AÑADIR PROMOCIÓN</span>
   </div>
 
-  <form action="includes/addp.inc.php" method="post">
+  <form action="includes/addp.inc.php" method="post" enctype="multipart/form-data">
     <div class="container form-group col-md-5 mt-4">
       <input type="text" class="form-control" name="nomN" placeholder="Nombre del negocio">
     </div>
@@ -37,6 +37,7 @@ require 'includes/dbh.inc.php';
         <option value="5">Viernes</option>
         <option value="6">Sábado</option>
         <option value="7">Domingo</option>
+        <option value="8">Todos los días</option>
       </select>
     </div>
 
@@ -47,6 +48,12 @@ require 'includes/dbh.inc.php';
     <div class="container form-group col-md-5">
       <input type="text" class="form-control" name="faceN" placeholder="Facebook (Enlace)">
     </div>
+
+    <div class="container form-group col-md-5">
+      <label for="controlFile1">Imágen de la promoción</label>
+      <input type="file" class="form-control-file" name="file" id="controlFile1">
+    </div>
+
 
     <div class="container form-group col-md-2">
       <button type="submit" class="form-control " name="addp-submit">AÑADIR</button>

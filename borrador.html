@@ -54,3 +54,13 @@
               $actualDay = date("l");
               echo $actualDay;
            ?>
+
+           CREATE TABLE negocio (
+id_n int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+nombre_n varchar(18) NOT NULL,
+tipo_n varchar(11) NOT NULL,
+dir_n text NOT NULL,
+face_n text NOT NULL,
+id_p1 int(11) NOT NULL,
+CONSTRAINT fk_ip FOREIGN KEY (id_p1)  REFERENCES promocion(id_p)
+)
