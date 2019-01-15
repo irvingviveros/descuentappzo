@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2019 a las 20:27:00
+-- Tiempo de generación: 15-01-2019 a las 23:57:17
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -44,7 +44,8 @@ INSERT INTO `dia` (`id_d`, `dia_d`) VALUES
 (4, 'Jueves'),
 (5, 'Viernes'),
 (6, 'Sábado'),
-(7, 'Domingo');
+(7, 'Domingo'),
+(8, 'Todos los días');
 
 -- --------------------------------------------------------
 
@@ -64,8 +65,8 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`id_i`, `nom_i`, `dir_i`) VALUES
 (1, '5c3d90840de162.52526708.jpg', 'images/uploads/restaurantes/5c3d90840de162.52526708.jpg'),
-(2, '5c3d91d2863363.53342303.jpg', 'images/uploads/restaurantes/5c3d91d2863363.53342303.jpg'),
-(3, '5c3d942e37ecc9.92496633.jpg', 'images/uploads/restaurantes/5c3d942e37ecc9.92496633.jpg');
+(4, '5c3e547834d6f8.37808792.jpg', 'images/uploads/restaurantes/5c3e547834d6f8.37808792.jpg'),
+(6, '5c3e63dd167a91.02081773.jpg', 'images/uploads/restaurantes/5c3e63dd167a91.02081773.jpg');
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,15 @@ CREATE TABLE `negocio` (
 INSERT INTO `negocio` (`id_n`, `nombre_n`, `tipo_n`, `dir_n`, `face_n`, `id_p1`) VALUES
 (1, 'Sushi Roll', 'restaurante', 'https://goo.gl/maps/WsFKskmgGzx', 'https://www.facebook.com/pages/Sushi-Roll/1068216479952481', 1),
 (2, 'Sushi Roll', 'restaurante', 'https://goo.gl/maps/WsFKskmgGzx', 'https://www.facebook.com/pages/Sushi-Roll/1068216479952481', 2),
-(3, 'Sushi Roll', 'restaurante', 'https://goo.gl/maps/WsFKskmgGzx', 'https://www.facebook.com/pages/Sushi-Roll/1068216479952481', 3);
+(3, 'Sushi Roll', 'restaurante', 'https://goo.gl/maps/WsFKskmgGzx', 'https://www.facebook.com/pages/Sushi-Roll/1068216479952481', 3),
+(4, 'Sushi Itto', 'restaurante', 'https://goo.gl/maps/pRb4FCZmsLB2', 'https://www.facebook.com/Sushiitto-Plaza-Americas-Veracruz-958906487492650/', 4),
+(5, 'Sushi Itto', 'restaurante', 'https://goo.gl/maps/pRb4FCZmsLB2', 'https://www.facebook.com/Sushiitto-Plaza-Americas-Veracruz-958906487492650/', 5),
+(6, 'Sushi Itto', 'restaurante', 'https://goo.gl/maps/pRb4FCZmsLB2', 'https://www.facebook.com/Sushiitto-Plaza-Americas-Veracruz-958906487492650/', 6),
+(7, 'Sushi Itto', 'restaurante', 'https://goo.gl/maps/pRb4FCZmsLB2', 'https://www.facebook.com/Sushiitto-Plaza-Americas-Veracruz-958906487492650/', 7),
+(8, 'Sushi Itto', 'restaurante', 'https://goo.gl/maps/pRb4FCZmsLB2', 'https://www.facebook.com/Sushiitto-Plaza-Americas-Veracruz-958906487492650/', 8),
+(9, 'Domu', 'restaurante', 'https://goo.gl/maps/taRUkAMeTnP2', 'https://www.facebook.com/DomuSushiBar/', 9),
+(10, 'Domu', 'restaurante', 'https://goo.gl/maps/taRUkAMeTnP2', 'https://www.facebook.com/DomuSushiBar/', 10),
+(11, 'Domu', 'restaurante', 'https://goo.gl/maps/taRUkAMeTnP2', 'https://www.facebook.com/DomuSushiBar/', 11);
 
 -- --------------------------------------------------------
 
@@ -110,8 +119,16 @@ CREATE TABLE `promocion` (
 
 INSERT INTO `promocion` (`id_p`, `titulo_p`, `id_d1`, `id_i1`) VALUES
 (1, 'Todos los rollos 2x1 a partir de las 18:00', 1, 1),
-(2, 'Todos los rollos 2x1 a partir de las 18:00', 2, 2),
-(3, 'Todos los rollos 2x1 a partir de las 18:00', 3, 3);
+(2, 'Todos los rollos 2x1 a partir de las 18:00', 2, 1),
+(3, 'Todos los rollos 2x1 a partir de las 18:00', 3, 1),
+(4, '2x1 en rollos a partir de las 18:00', 1, 4),
+(5, '2x1 en rollos a partir de las 18:00', 2, 4),
+(6, '2x1 en rollos a partir de las 18:00', 3, 4),
+(7, '2x1 en rollos a partir de las 18:00', 4, 4),
+(8, '2x1 en rollos a partir de las 18:00', 5, 4),
+(9, 'ComBOTELLA $599 de 9 PM a 12 AM', 4, 6),
+(10, 'ComBOTELLA $599 de 9 PM a 12 AM', 5, 6),
+(11, 'ComBOTELLA $599 de 9 PM a 12 AM', 6, 6);
 
 --
 -- Índices para tablas volcadas
@@ -152,19 +169,19 @@ ALTER TABLE `promocion`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `negocio`
 --
 ALTER TABLE `negocio`
-  MODIFY `id_n` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_n` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `promocion`
 --
 ALTER TABLE `promocion`
-  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas

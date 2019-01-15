@@ -3,7 +3,7 @@
 $servername = "localhost";		//dirección del host
 $dBUsername = "root";			//nombre usuario root
 $dBPassword = "";				//password usuario root
-$dBName = "descuentappzo";		//nombre de la bd
+$dBName = "Descuentappzo";		//nombre de la bd
 
 $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);		//conección a la bd
 $acentos = mysqli_query($conn, "SET NAMES 'utf8'"); //solucionar el problema de los acentos y eñes
