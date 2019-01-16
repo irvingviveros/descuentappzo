@@ -59,6 +59,10 @@
             <a class="dropdown-item" href="domingo.php">Domingo</a>
           </div>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="index.php">Promociones cumpleañeros</a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link text-white" href="#">Restaurantes</a>
         </li>

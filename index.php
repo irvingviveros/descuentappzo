@@ -153,247 +153,7 @@ require 'includes/dbh.inc.php';
 <div class="middle-container">
 
   <!-- promo del día -->
-  <div class="etiqueta-default etiqueta-promoDelDia">
-    <span class="etiqueta-texto">TODOS LOS DÍAS</span>
-  </div>
-  <div class="card-container-default">
 
-
-      <div class="container pt-3 pb-3 link-color">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="rest-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Restaurante</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="cafe-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Café</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="bar-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bar</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="rest-tab">
-            <div class="slideshow">
-            <?php
-                  $local = "restaurante";
-                  $dia = "8";
-                  //prepare a query
-                  $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
-                  INNER JOIN promocion AS p ON n.id_p1 = p.id_p
-                  INNER JOIN dia AS d ON p.id_d1 = d.id_d
-                  INNER JOIN images AS i ON p.id_i1 = i.id_i
-                  WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
-                  //create a prepared statement
-                  $stmt = mysqli_stmt_init($conn);
-                  //prepare the prepared statement
-                  if(!mysqli_stmt_prepare($stmt, $sql)){
-                    echo "SQL STATEMENT FAILED";
-                  } else {
-                      //bind parameters to the placeholder. s = string, i = integer, b = boolean
-                      mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
-                      //run parameters inside database
-                      mysqli_stmt_execute($stmt);
-                      $result = mysqli_stmt_get_result($stmt);
-                      while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
-
-                        echo '
-                        <div class="slide">
-                          <div class="contenedor">
-                        <div class="card card-s">
-                          <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
-                          <div class="card-body">
-                            <h4 class="card-title">'. $row['nombre_n'] . '</h4>
-                            <div class="card-header">
-                              '. $row['titulo_p'] . '
-                            </div>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
-                              <div class="list-group-item">
-                                <div class="row link-color">
-                                  <a href="'. $row['face_n'] . '" class="col">
-                                    <div class="col">
-                                      <div class="row justify-content-center">
-                                          <i class="fab fa-facebook-square"></i>
-                                      </div>
-                                      <div class="row justify-content-center">
-                                        <span>Facebook</span>
-                                      </div>
-                                    </div>
-                                  </a>
-
-                                  <a href="'. $row['dir_n'] . '" class="col">
-                                    <div class="col">
-                                      <div class="row justify-content-center">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                      </div>
-                                      <div class="row justify-content-center">
-                                        <span class="link-color">Ubicación</span>
-                                      </div>
-                                    </div>
-                                  </a>
-                                </div>
-                              </div>
-                              <!-- FIN LIST-GROUP ITEM -->
-                            </ul>
-                          </div>
-                        </div>
-                        </div>
-                      </div>';
-                      }
-                  }
-             ?>
-           </div>
-          </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="cafe-tab">
-            <div class="slideshow">
-            <?php
-                  $local = "cafe";
-                  $dia = "8";
-                  //prepare a query
-                  $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
-                  INNER JOIN promocion AS p ON n.id_p1 = p.id_p
-                  INNER JOIN dia AS d ON p.id_d1 = d.id_d
-                  INNER JOIN images AS i ON p.id_i1 = i.id_i
-                  WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
-                  //create a prepared statement
-                  $stmt = mysqli_stmt_init($conn);
-                  //prepare the prepared statement
-                  if(!mysqli_stmt_prepare($stmt, $sql)){
-                    echo "SQL STATEMENT FAILED";
-                  } else {
-                      //bind parameters to the placeholder. s = string, i = integer, b = boolean
-                      mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
-                      //run parameters inside database
-                      mysqli_stmt_execute($stmt);
-                      $result = mysqli_stmt_get_result($stmt);
-                      while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
-
-                        echo '
-                        <div class="slide">
-                          <div class="contenedor">
-                        <div class="card card-s">
-                          <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
-                          <div class="card-body">
-                            <h4 class="card-title">'. $row['nombre_n'] . '</h4>
-                            <div class="card-header">
-                              '. $row['titulo_p'] . '
-                            </div>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
-                              <div class="list-group-item">
-                                <div class="row link-color">
-                                  <a href="'. $row['face_n'] . '" class="col">
-                                    <div class="col">
-                                      <div class="row justify-content-center">
-                                          <i class="fab fa-facebook-square"></i>
-                                      </div>
-                                      <div class="row justify-content-center">
-                                        <span>Facebook</span>
-                                      </div>
-                                    </div>
-                                  </a>
-
-                                  <a href="'. $row['dir_n'] . '" class="col">
-                                    <div class="col">
-                                      <div class="row justify-content-center">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                      </div>
-                                      <div class="row justify-content-center">
-                                        <span class="link-color">Ubicación</span>
-                                      </div>
-                                    </div>
-                                  </a>
-                                </div>
-                              </div>
-                              <!-- FIN LIST-GROUP ITEM -->
-                            </ul>
-                          </div>
-                        </div>
-                        </div>
-                      </div>';
-                      }
-                  }
-             ?>
-           </div>
-          </div>
-          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="bar-tab">
-            <div class="slideshow">
-            <?php
-                  $local = "bar";
-                  $dia = "8";
-                  //prepare a query
-                  $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
-                  INNER JOIN promocion AS p ON n.id_p1 = p.id_p
-                  INNER JOIN dia AS d ON p.id_d1 = d.id_d
-                  INNER JOIN images AS i ON p.id_i1 = i.id_i
-                  WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
-                  //create a prepared statement
-                  $stmt = mysqli_stmt_init($conn);
-                  //prepare the prepared statement
-                  if(!mysqli_stmt_prepare($stmt, $sql)){
-                    echo "SQL STATEMENT FAILED";
-                  } else {
-                      //bind parameters to the placeholder. s = string, i = integer, b = boolean
-                      mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
-                      //run parameters inside database
-                      mysqli_stmt_execute($stmt);
-                      $result = mysqli_stmt_get_result($stmt);
-                      while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
-
-                        echo '
-                        <div class="slide">
-                          <div class="contenedor">
-                        <div class="card card-s">
-                          <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
-                          <div class="card-body">
-                            <h4 class="card-title">'. $row['nombre_n'] . '</h4>
-                            <div class="card-header">
-                              '. $row['titulo_p'] . '
-                            </div>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
-                              <div class="list-group-item">
-                                <div class="row link-color">
-                                  <a href="'. $row['face_n'] . '" class="col">
-                                    <div class="col">
-                                      <div class="row justify-content-center">
-                                          <i class="fab fa-facebook-square"></i>
-                                      </div>
-                                      <div class="row justify-content-center">
-                                        <span>Facebook</span>
-                                      </div>
-                                    </div>
-                                  </a>
-
-                                  <a href="'. $row['dir_n'] . '" class="col">
-                                    <div class="col">
-                                      <div class="row justify-content-center">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                      </div>
-                                      <div class="row justify-content-center">
-                                        <span class="link-color">Ubicación</span>
-                                      </div>
-                                    </div>
-                                  </a>
-                                </div>
-                              </div>
-                              <!-- FIN LIST-GROUP ITEM -->
-                            </ul>
-                          </div>
-                        </div>
-                        </div>
-                      </div>';
-                      }
-                  }
-             ?>
-           </div>
-          </div>
-        </div>
-      </div>
-
-
-
-  </div>
 
   <!-- fin promo por día -->
 
@@ -554,7 +314,7 @@ require 'includes/dbh.inc.php';
             INNER JOIN promocion AS p ON n.id_p1 = p.id_p
             INNER JOIN dia AS d ON p.id_d1 = d.id_d
             INNER JOIN images AS i ON p.id_i1 = i.id_i
-            WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+            WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
             //create a prepared statement
             $stmt = mysqli_stmt_init($conn);
             //prepare the prepared statement
@@ -764,7 +524,7 @@ require 'includes/dbh.inc.php';
             INNER JOIN promocion AS p ON n.id_p1 = p.id_p
             INNER JOIN dia AS d ON p.id_d1 = d.id_d
             INNER JOIN images AS i ON p.id_i1 = i.id_i
-            WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+            WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
             //create a prepared statement
             $stmt = mysqli_stmt_init($conn);
             //prepare the prepared statement
@@ -1060,7 +820,7 @@ require 'includes/dbh.inc.php';
             INNER JOIN promocion AS p ON n.id_p1 = p.id_p
             INNER JOIN dia AS d ON p.id_d1 = d.id_d
             INNER JOIN images AS i ON p.id_i1 = i.id_i
-            WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+            WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
             //create a prepared statement
             $stmt = mysqli_stmt_init($conn);
             //prepare the prepared statement
@@ -1270,7 +1030,7 @@ require 'includes/dbh.inc.php';
             INNER JOIN promocion AS p ON n.id_p1 = p.id_p
             INNER JOIN dia AS d ON p.id_d1 = d.id_d
             INNER JOIN images AS i ON p.id_i1 = i.id_i
-            WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+            WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
             //create a prepared statement
             $stmt = mysqli_stmt_init($conn);
             //prepare the prepared statement
@@ -1566,7 +1326,7 @@ require 'includes/dbh.inc.php';
             INNER JOIN promocion AS p ON n.id_p1 = p.id_p
             INNER JOIN dia AS d ON p.id_d1 = d.id_d
             INNER JOIN images AS i ON p.id_i1 = i.id_i
-            WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+            WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
             //create a prepared statement
             $stmt = mysqli_stmt_init($conn);
             //prepare the prepared statement
@@ -1776,7 +1536,7 @@ require 'includes/dbh.inc.php';
             INNER JOIN promocion AS p ON n.id_p1 = p.id_p
             INNER JOIN dia AS d ON p.id_d1 = d.id_d
             INNER JOIN images AS i ON p.id_i1 = i.id_i
-            WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+            WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
             //create a prepared statement
             $stmt = mysqli_stmt_init($conn);
             //prepare the prepared statement
@@ -1913,6 +1673,246 @@ require 'includes/dbh.inc.php';
   </div>
 
   <!-- fin promo bares -->
+
+  <div class="etiqueta-default etiqueta-promoDelDia">
+    <span class="etiqueta-texto">TODOS LOS DÍAS</span>
+  </div>
+  <div class="card-container-default">
+
+
+      <div class="container pt-3 pb-3 link-color">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="rest-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Restaurante</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="cafe-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Café</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="bar-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bar</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="rest-tab">
+            <div class="slideshow">
+            <?php
+                  $local = "restaurante";
+                  $dia = "8";
+                  //prepare a query
+                  $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
+                  INNER JOIN promocion AS p ON n.id_p1 = p.id_p
+                  INNER JOIN dia AS d ON p.id_d1 = d.id_d
+                  INNER JOIN images AS i ON p.id_i1 = i.id_i
+                  WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
+                  //create a prepared statement
+                  $stmt = mysqli_stmt_init($conn);
+                  //prepare the prepared statement
+                  if(!mysqli_stmt_prepare($stmt, $sql)){
+                    echo "SQL STATEMENT FAILED";
+                  } else {
+                      //bind parameters to the placeholder. s = string, i = integer, b = boolean
+                      mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
+                      //run parameters inside database
+                      mysqli_stmt_execute($stmt);
+                      $result = mysqli_stmt_get_result($stmt);
+                      while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                        echo '
+                        <div class="slide">
+                          <div class="contenedor">
+                        <div class="card card-s">
+                          <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
+                          <div class="card-body">
+                            <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                            <div class="card-header">
+                              '. $row['titulo_p'] . '
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                              <div class="list-group-item">
+                                <div class="row link-color">
+                                  <a href="'. $row['face_n'] . '" class="col">
+                                    <div class="col">
+                                      <div class="row justify-content-center">
+                                          <i class="fab fa-facebook-square"></i>
+                                      </div>
+                                      <div class="row justify-content-center">
+                                        <span>Facebook</span>
+                                      </div>
+                                    </div>
+                                  </a>
+
+                                  <a href="'. $row['dir_n'] . '" class="col">
+                                    <div class="col">
+                                      <div class="row justify-content-center">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                      </div>
+                                      <div class="row justify-content-center">
+                                        <span class="link-color">Ubicación</span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                              <!-- FIN LIST-GROUP ITEM -->
+                            </ul>
+                          </div>
+                        </div>
+                        </div>
+                      </div>';
+                      }
+                  }
+             ?>
+           </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="cafe-tab">
+            <div class="slideshow">
+            <?php
+                  $local = "cafe";
+                  $dia = "8";
+                  //prepare a query
+                  $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
+                  INNER JOIN promocion AS p ON n.id_p1 = p.id_p
+                  INNER JOIN dia AS d ON p.id_d1 = d.id_d
+                  INNER JOIN images AS i ON p.id_i1 = i.id_i
+                  WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
+                  //create a prepared statement
+                  $stmt = mysqli_stmt_init($conn);
+                  //prepare the prepared statement
+                  if(!mysqli_stmt_prepare($stmt, $sql)){
+                    echo "SQL STATEMENT FAILED";
+                  } else {
+                      //bind parameters to the placeholder. s = string, i = integer, b = boolean
+                      mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
+                      //run parameters inside database
+                      mysqli_stmt_execute($stmt);
+                      $result = mysqli_stmt_get_result($stmt);
+                      while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                        echo '
+                        <div class="slide">
+                          <div class="contenedor">
+                        <div class="card card-s">
+                          <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
+                          <div class="card-body">
+                            <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                            <div class="card-header">
+                              '. $row['titulo_p'] . '
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                              <div class="list-group-item">
+                                <div class="row link-color">
+                                  <a href="'. $row['face_n'] . '" class="col">
+                                    <div class="col">
+                                      <div class="row justify-content-center">
+                                          <i class="fab fa-facebook-square"></i>
+                                      </div>
+                                      <div class="row justify-content-center">
+                                        <span>Facebook</span>
+                                      </div>
+                                    </div>
+                                  </a>
+
+                                  <a href="'. $row['dir_n'] . '" class="col">
+                                    <div class="col">
+                                      <div class="row justify-content-center">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                      </div>
+                                      <div class="row justify-content-center">
+                                        <span class="link-color">Ubicación</span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                              <!-- FIN LIST-GROUP ITEM -->
+                            </ul>
+                          </div>
+                        </div>
+                        </div>
+                      </div>';
+                      }
+                  }
+             ?>
+           </div>
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="bar-tab">
+            <div class="slideshow">
+            <?php
+                  $local = "bar";
+                  $dia = "8";
+                  //prepare a query
+                  $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
+                  INNER JOIN promocion AS p ON n.id_p1 = p.id_p
+                  INNER JOIN dia AS d ON p.id_d1 = d.id_d
+                  INNER JOIN images AS i ON p.id_i1 = i.id_i
+                  WHERE n.tipo_n = ? AND d.id_d = ?;";            //consulta
+                  //create a prepared statement
+                  $stmt = mysqli_stmt_init($conn);
+                  //prepare the prepared statement
+                  if(!mysqli_stmt_prepare($stmt, $sql)){
+                    echo "SQL STATEMENT FAILED";
+                  } else {
+                      //bind parameters to the placeholder. s = string, i = integer, b = boolean
+                      mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
+                      //run parameters inside database
+                      mysqli_stmt_execute($stmt);
+                      $result = mysqli_stmt_get_result($stmt);
+                      while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
+
+                        echo '
+                        <div class="slide">
+                          <div class="contenedor">
+                        <div class="card card-s">
+                          <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
+                          <div class="card-body">
+                            <h4 class="card-title">'. $row['nombre_n'] . '</h4>
+                            <div class="card-header">
+                              '. $row['titulo_p'] . '
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
+                              <div class="list-group-item">
+                                <div class="row link-color">
+                                  <a href="'. $row['face_n'] . '" class="col">
+                                    <div class="col">
+                                      <div class="row justify-content-center">
+                                          <i class="fab fa-facebook-square"></i>
+                                      </div>
+                                      <div class="row justify-content-center">
+                                        <span>Facebook</span>
+                                      </div>
+                                    </div>
+                                  </a>
+
+                                  <a href="'. $row['dir_n'] . '" class="col">
+                                    <div class="col">
+                                      <div class="row justify-content-center">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                      </div>
+                                      <div class="row justify-content-center">
+                                        <span class="link-color">Ubicación</span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                              <!-- FIN LIST-GROUP ITEM -->
+                            </ul>
+                          </div>
+                        </div>
+                        </div>
+                      </div>';
+                      }
+                  }
+             ?>
+           </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
 
 </div>
 
