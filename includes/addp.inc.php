@@ -3,12 +3,12 @@
 if (isset($_POST['addp-submit'])) {
   require 'dbh.inc.php';
 
-  $nombreNegocio = $_POST['nomN'];          //nombre negocio
-  $tipoNegocio = $_POST['tipoN'];           //tipo negocio
-  $tituloPromo = $_POST['titP'];            //título promoción
-  $diaPromo = $_POST['diaP'];               //día promoción
-  $direccionNegocio = $_POST['dirN'];       //dirección negocio
-  $faceNegocio = $_POST['faceN'];           //enlace facebook
+  $nombreNegocio = mysqli_real_escape_string($conn, $_POST['nomN']);          //nombre negocio
+  $tipoNegocio = mysqli_real_escape_string($conn, $_POST['tipoN']);           //tipo negocio
+  $tituloPromo = mysqli_real_escape_string($conn, $_POST['titP']);          //título promoción
+  $diaPromo = mysqli_real_escape_string($conn, $_POST['diaP']);               //día promoción
+  $direccionNegocio = mysqli_real_escape_string($conn, $_POST['dirN']);        //dirección negocio
+  $faceNegocio = mysqli_real_escape_string($conn, $_POST['faceN']);            //enlace facebook
 
   //imagen
   $uploadDirRest = '../images/uploads/restaurantes/';
@@ -33,11 +33,11 @@ if (isset($_POST['addp-submit'])) {
           $fileDestination = $uploadDirRest.$fileNameNew;
           move_uploaded_file($fileTmpName, $fileDestination);
           $fileDestinationFinal = 'images/uploads/restaurantes/'.$fileNameNew;
-        } else if ($tipoNegocio == "bares"){
+        } else if ($tipoNegocio == "bar"){
           $fileDestination = $uploadDirBar.$fileNameNew;
           move_uploaded_file($fileTmpName, $fileDestination);
           $fileDestinationFinal = 'images/uploads/bares/'.$fileNameNew;
-        } else if ($tipoNegocio == "cafes"){
+        } else if ($tipoNegocio == "cafe"){
           $fileDestination = $uploadDirCafe.$fileNameNew;
           move_uploaded_file($fileTmpName, $fileDestination);
           $fileDestinationFinal = 'images/uploads/cafes/'.$fileNameNew;

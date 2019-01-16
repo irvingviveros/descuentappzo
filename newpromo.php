@@ -11,7 +11,7 @@ require 'includes/dbh.inc.php';
 
   <form action="includes/addp.inc.php" method="post" enctype="multipart/form-data">
     <div class="container form-group col-md-5 mt-4">
-      <input type="text" class="form-control" name="nomN" placeholder="Nombre del negocio">
+      <input type="text" class="form-control" name="nomN" maxlength="18" placeholder="Nombre del negocio">
     </div>
 
     <div class="container form-group col-sm-5">
@@ -24,7 +24,7 @@ require 'includes/dbh.inc.php';
     </div>
 
     <div class="container form-group col-md-5">
-      <input type="text" class="form-control" name="titP" placeholder="Encabezado de la promoción">
+      <input type="text" class="form-control" name="titP" maxlength="45" placeholder="Encabezado de la promoción">
     </div>
 
     <div class="container form-group col-sm-5">
