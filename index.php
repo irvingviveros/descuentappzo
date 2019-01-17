@@ -381,7 +381,7 @@ require 'includes/dbh.inc.php';
                   INNER JOIN promocion AS p ON n.id_p1 = p.id_p
                   INNER JOIN dia AS d ON p.id_d1 = d.id_d
                   INNER JOIN images AS i ON p.id_i1 = i.id_i
-                  WHERE n.tipo_n = ? AND d.id_d = ?;  AND p.birthday_p = ?";            //consulta
+                  WHERE n.tipo_n = ? AND d.id_d = ? AND p.birthday_p = ?";            //consulta
                   //create a prepared statement
                   $stmt = mysqli_stmt_init($conn);
                   //prepare the prepared statement

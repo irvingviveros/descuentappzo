@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2019 a las 08:39:19
+-- Tiempo de generación: 18-01-2019 a las 00:21:10
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -421,7 +421,7 @@ INSERT INTO `promocion` (`id_p`, `titulo_p`, `id_d1`, `id_i1`, `birthday_p`) VAL
 (114, 'Bebidas al 3 x 2 de 10:00 a 14:00', 4, 104, b'0'),
 (115, 'Waffle Original a 3 x 2', 2, 105, b'0'),
 (116, 'Café del día a $19', 8, 106, b'0'),
-(117, 'Cumpleañeros haburguesa gratis', 8, 107, b'1');
+(117, 'Cumpleañeros hamburguesa gratis', 8, 107, b'1');
 
 --
 -- Índices para tablas volcadas
