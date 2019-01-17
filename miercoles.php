@@ -55,6 +55,7 @@ require 'includes/dbh.inc.php';
             echo '
             <div class="container mt-3 pt-3 pb-3" style="background-color: #F2F2F2">
               <div class="list-group">
+              <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
                 <div class="list-group-item list-group-item-action text-center">'. $row['titulo_p'] . '</div>
                 <div class="list-group-item">
@@ -104,6 +105,7 @@ require 'includes/dbh.inc.php';
             echo '
             <div class="container mt-3 pt-3 pb-3" style="background-color: #F2F2F2">
               <div class="list-group">
+                <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
                 <div class="list-group-item list-group-item-action text-center">'. $row['titulo_p'] . '</div>
                 <div class="list-group-item">
@@ -154,6 +156,7 @@ require 'includes/dbh.inc.php';
             echo '
             <div class="container mt-3 pt-3 pb-3" style="background-color: #F2F2F2">
               <div class="list-group">
+                <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
                 <div class="list-group-item list-group-item-action text-center">'. $row['titulo_p'] . '</div>
                 <div class="list-group-item">

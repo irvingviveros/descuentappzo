@@ -9,7 +9,7 @@ if (isset($_POST['addp-submit'])) {
   $diaPromo = mysqli_real_escape_string($conn, $_POST['diaP']);               //día promoción
   $direccionNegocio = mysqli_real_escape_string($conn, $_POST['dirN']);        //dirección negocio
   $faceNegocio = mysqli_real_escape_string($conn, $_POST['faceN']);            //enlace facebook
-
+  $birthdayPromo = mysqli_real_escape_string($conn, $_POST['birthdayN']);     //es una promoción de cumpleaños?
   //imagen
   $uploadDirRest = '../images/uploads/restaurantes/';
   $uploadDirBar = '../images/uploads/bares/';
@@ -70,7 +70,7 @@ if (isset($_POST['addp-submit'])) {
   //se insertan placeholders "?" para no mostrar esa información en el header
   //se insertan los datos introducidos a la bd
 
-  $sql = "INSERT INTO promocion (titulo_p, id_d1, id_i1) VALUES ('$tituloPromo', '$diaPromo', last_insert_id());";
+  $sql = "INSERT INTO promocion (titulo_p, id_d1, id_i1, birthday_p) VALUES ('$tituloPromo', '$diaPromo', last_insert_id(), '$birthdayPromo');";
   $sql .= "INSERT INTO negocio (nombre_n, tipo_n, dir_n, face_n, id_p1) VALUES ('$nombreNegocio', '$tipoNegocio', '$direccionNegocio', '$faceNegocio', last_insert_id());";
 
   if (mysqli_multi_query($conn, $sql)) {

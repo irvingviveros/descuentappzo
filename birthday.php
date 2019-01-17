@@ -5,7 +5,7 @@ require 'includes/dbh.inc.php';
 
 <body>
   <div class="etiqueta-default bg-light mt-4">
-    <span class="etiqueta-texto">VIERNES</span>
+    <span class="etiqueta-texto">¡CELEBRA TU CUMPLE!</span>
   </div>
 
 <!-- <div class="etiqueta-default etiqueta-restaurantes" style="margin-top: 2em">
@@ -31,13 +31,13 @@ require 'includes/dbh.inc.php';
       <?php
 
       $local = "restaurante";
-      $dia = "Viernes";
+      $birthdayPromo = 1;
       //prepare a query
       $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
       INNER JOIN promocion AS p ON n.id_p1 = p.id_p
       INNER JOIN dia AS d ON p.id_d1 = d.id_d
       INNER JOIN images AS i ON p.id_i1 = i.id_i
-      WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+      WHERE n.tipo_n = ? AND p.birthday_p = ?;";            //consulta
       //create a prepared statement
       $stmt = mysqli_stmt_init($conn);
       //prepare the prepared statement
@@ -45,7 +45,7 @@ require 'includes/dbh.inc.php';
         echo "SQL STATEMENT FAILED";
       } else {
           //bind parameters to the placeholder. s = string, i = integer, b = boolean
-          mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
+          mysqli_stmt_bind_param($stmt, "si", $local, $birthdayPromo);
           //run parameters inside database
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
@@ -58,6 +58,7 @@ require 'includes/dbh.inc.php';
                 <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
                 <div class="list-group-item list-group-item-action text-center">'. $row['titulo_p'] . '</div>
+                <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
                 <div class="list-group-item">
                   <div class="row">
                     <a href="'. $row['face_n'] . '" class="col text-center border-right">
@@ -81,13 +82,13 @@ require 'includes/dbh.inc.php';
       <?php
 
       $local = "cafe";
-      $dia = "Viernes";
+      $birthdayPromo = 1;
       //prepare a query
       $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
       INNER JOIN promocion AS p ON n.id_p1 = p.id_p
       INNER JOIN dia AS d ON p.id_d1 = d.id_d
       INNER JOIN images AS i ON p.id_i1 = i.id_i
-      WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+      WHERE n.tipo_n = ? AND p.birthday_p = ?;";            //consulta
       //create a prepared statement
       $stmt = mysqli_stmt_init($conn);
       //prepare the prepared statement
@@ -95,7 +96,7 @@ require 'includes/dbh.inc.php';
         echo "SQL STATEMENT FAILED";
       } else {
           //bind parameters to the placeholder. s = string, i = integer, b = boolean
-          mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
+          mysqli_stmt_bind_param($stmt, "si", $local, $birthdayPromo);
           //run parameters inside database
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
@@ -108,6 +109,7 @@ require 'includes/dbh.inc.php';
                 <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
                 <div class="list-group-item list-group-item-action text-center">'. $row['titulo_p'] . '</div>
+                <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
                 <div class="list-group-item">
                   <div class="row">
                     <a href="'. $row['face_n'] . '" class="col text-center border-right">
@@ -132,13 +134,13 @@ require 'includes/dbh.inc.php';
       <?php
 
       $local = "bar";
-      $dia = "Viernes";
+      $birthdayPromo = 1;
       //prepare a query
       $sql = "SELECT n.*, p.*, d.*, i.*  FROM negocio AS n
       INNER JOIN promocion AS p ON n.id_p1 = p.id_p
       INNER JOIN dia AS d ON p.id_d1 = d.id_d
       INNER JOIN images AS i ON p.id_i1 = i.id_i
-      WHERE n.tipo_n = ? AND d.dia_d = ?;";            //consulta
+      WHERE n.tipo_n = ? AND p.birthday_p = ?;";            //consulta
       //create a prepared statement
       $stmt = mysqli_stmt_init($conn);
       //prepare the prepared statement
@@ -146,7 +148,7 @@ require 'includes/dbh.inc.php';
         echo "SQL STATEMENT FAILED";
       } else {
           //bind parameters to the placeholder. s = string, i = integer, b = boolean
-          mysqli_stmt_bind_param($stmt, "ss", $local, $dia);
+          mysqli_stmt_bind_param($stmt, "si", $local, $birthdayPromo);
           //run parameters inside database
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
@@ -159,6 +161,7 @@ require 'includes/dbh.inc.php';
                 <img class="card-img-middle img-fluid" src="'.$row['dir_i'].'" alt="Card image cap">
                 <div class="list-group-item list-group-item-action card-title">'. $row['nombre_n'] . '</div>
                 <div class="list-group-item list-group-item-action text-center">'. $row['titulo_p'] . '</div>
+                <li class="list-group-item list-group-center"></i>'. $row['dia_d'] . '</li>
                 <div class="list-group-item">
                   <div class="row">
                     <a href="'. $row['face_n'] . '" class="col text-center border-right">

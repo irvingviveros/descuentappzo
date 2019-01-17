@@ -61,7 +61,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white" href="index.php">Promociones cumpleañeros</a>
+          <a class="nav-link text-white" href="birthday.php">Promociones cumpleañeros</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link text-white" href="#">Restaurantes</a>
