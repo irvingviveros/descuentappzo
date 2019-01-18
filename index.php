@@ -33,17 +33,17 @@ require 'includes/dbh.inc.php';
 
           <div class="carousel-item col-md-4 active">
             <div class="card">
-              <img class="card-img-top img-fluid" src="images/food1.jpg" alt="Card image cap">
+              <img class="card-img-top img-fluid" src="images/uploads/bares/5c3ecbb94969a2.05990699.png" alt="Barra Rosa">
               <div class="card-body">
-                <h4 class="card-title">LE VLÚ</h4>
+                <h4 class="card-title">BARRA ROSA</h4>
                 <div class="card-header header-descatado">
-                  <span class="list-group-item">Hamburguesa y malteada por $73</span>
+                  <span class="list-group-item">Caguamas ilimitadas: Mujeres - $100, Hombres - $200</span>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><i class="far fa-calendar pr-3"></i>Jueves</li>
-                  <li class="list-group-item link-color"> <a href="https://goo.gl/maps/26q61GNfTs52">
+                  <li class="list-group-item link-color"> <a href="https://goo.gl/maps/51E2CvCfFm42">
                     <i class="fas fa-map-marker-alt pr-3"></i>Ubicación</li></a>
-                  <li class="list-group-item link-color"> <a href="https://www.facebook.com/levluhamburguesas/">
+                  <li class="list-group-item link-color"> <a href="https://www.facebook.com/barrarosabar/">
                     <i class="fab fa-facebook-square pr-3"></i></i>Página en Facebook</li></a>
                 </ul>
               </div>
@@ -52,36 +52,36 @@ require 'includes/dbh.inc.php';
 
           <div class="carousel-item col-md-4">
             <div class="card">
-              <img class="card-img-top img-fluid" src="images/food3.jpg" alt="Card image cap">
+              <img class="card-img-top img-fluid" src="images/uploads/bares/5c3e962e565db9.07334868.jpeg" alt="DIECINUEVE">
               <div class="card-body">
-                <h4 class="card-title">McCarthy's</h4>
+                <h4 class="card-title">DIECINUEVE</h4>
                 <div class="card-header header-descatado">
-                 <span class="list-group-item">Alitas a $4.90 c/u</span>
+                 <span class="list-group-item">3 Tarros de cerveza a $50</span>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><i class="far fa-calendar pr-3"></i>Martes y Miércoles</li>
+                  <li class="list-group-item link-color"> <a href="https://goo.gl/maps/UwUAwjHDShm">
+                    <i class="fas fa-map-marker-alt pr-3"></i>Ubicación</li></a>
+                  <li class="list-group-item link-color"> <a href="https://www.facebook.com/bardiecinueve/">
+                    <i class="fab fa-facebook-square pr-3"></i></i>Página en Facebook</li></a>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="images/uploads/restaurantes/5c3f6b9f6bff24.96325589.jpg" alt="HOOK">
+              <div class="card-body">
+                <h4 class="card-title">HOOK FISHBAR BOCA</h4>
+                <div class="card-header header-descatado">
+                  <span class="list-group-item">Hamburguesas al 2 x 1</span>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><i class="far fa-calendar pr-3"></i>Lunes</li>
-                  <li class="list-group-item link-color"> <a href="https://goo.gl/maps/YcGw3VjapXr">
+                  <li class="list-group-item link-color"> <a href="https://goo.gl/maps/XbfdcUsccTE2">
                     <i class="fas fa-map-marker-alt pr-3"></i>Ubicación</li></a>
-                  <li class="list-group-item link-color"> <a href="https://www.facebook.com/mccarthysbocadelrio/">
-                    <i class="fab fa-facebook-square pr-3"></i></i>Página en Facebook</li></a>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item col-md-4">
-            <div class="card">
-              <img class="card-img-top img-fluid" src="images/food3.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">KONTAINER</h4>
-                <div class="card-header header-descatado">
-                  <span class="list-group-item">Bebidas preparadas al 2x1</span>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><i class="far fa-calendar pr-3"></i>Jueves</li>
-                  <li class="list-group-item link-color"> <a href="https://goo.gl/maps/bJ2jufXjymp">
-                    <i class="fas fa-map-marker-alt pr-3"></i>Ubicación</li></a>
-                  <li class="list-group-item link-color"> <a href="https://www.facebook.com/kontaineroficial/">
+                  <li class="list-group-item link-color"> <a href="https://www.facebook.com/HookBoca/">
                     <i class="fab fa-facebook-square pr-3"></i></i>Página en Facebook</li></a>
                 </ul>
               </div>
@@ -111,27 +111,28 @@ require 'includes/dbh.inc.php';
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="images/food1.jpg" alt="First slide">
+          <img class="d-block w-100" src="images/uploads/bares/5c3ecbb94969a2.05990699.png"  style="width: 100%;
+    height: 70vw;
+    object-fit: cover;" alt="Barra Rosa">
           <div class="carousel-caption d-none d-md-block">
-            <h5 class="bg-dark d-inline-block">Imagen 1</h5>
             <br>
-            <p class="bg-dark d-inline-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="images/food2.jpg" alt="Second slide">
+          <img class="d-block w-100" src="images/uploads/bares/5c3e962e565db9.07334868.jpeg"  style="width: 100%;
+    height: 70vw;
+    object-fit: cover;" alt="Diecinueve">
           <div class="carousel-caption d-none d-md-block">
-            <h5 class="bg-dark d-inline-block">Imagen 2</h5>
             <br>
-            <p class="bg-dark d-inline-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="images/food3.jpg" alt="Mariscos">
+          <img class="d-block w-100" src="images/uploads/restaurantes/5c3f6b9f6bff24.96325589.jpg"  style="width: 100%;
+    height: 70vw; object-fit: cover;" alt="Mariscos">
           <div class="carousel-caption d-none d-md-block">
-            <h5 class="bg-dark d-inline-block">Mariscos en Mardel</h5>
+            <!-- <h5 class="bg-dark d-inline-block">Mariscos en Mardel</h5> -->
             <br>
-            <p class="bg-dark d-inline-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+            <!-- <p class="bg-dark d-inline-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p> -->
           </div>
         </div>
       </div>
