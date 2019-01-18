@@ -2,7 +2,7 @@
 require "header.php";
 ?>
 
-<body>
+<body class="">
   <p><strong>POLÍTICA DE PRIVACIDAD</strong></p>
   <p>&nbsp;</p>
   <p>El presente Política de Privacidad establece los términos en que Proday usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. Esta compañía está comprometida con la seguridad de los datos de sus
@@ -33,4 +33,8 @@ require "header.php";
   <p>Esta compañía no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento, salvo que sea requerido por un juez con un orden judicial.</p>
   <p>Proday Se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
 
-</body>
+</body
+
+<?php
+require "footer.php";
+?>

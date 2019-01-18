@@ -8,7 +8,9 @@
   font-weight: bold;
 }
 
-#container-top-web {}
+#container-top-web {
+
+}
 
 #container-top-mobile {
   height: 645px;
@@ -24,6 +26,27 @@
   width: 100%;
   height: 70vw;
   object-fit: cover;
+}
+
+.card-img-top-desktop{
+  display: block;
+  width: 100%;
+  height: 35vw;
+  object-fit: contain;
+}
+
+.carousel-control-next-icon{
+  background-color: black;
+  -webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
+}
+
+.carousel-control-prev-icon{
+  background-color: black;
+  -webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
 }
 
 /* MIDDLE CONTENT, CARDS, ETC. */

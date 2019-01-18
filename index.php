@@ -103,7 +103,11 @@ require '../includes/dbh.inc.php';
   <!-- TOP CARD CONTAINER FOR WEB -->
   <div id="container-top-web">
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="container">
+      <h1 class="text-center m-5 font-weight-bold">PROMOCIONES ESPECIALES</h1>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide mt-3 pl-5" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -111,29 +115,108 @@ require '../includes/dbh.inc.php';
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="images/uploads/bares/5c3ecbb94969a2.05990699.png"  style="width: 100%;
-    height: 70vw;
-    object-fit: cover;" alt="Barra Rosa">
-          <div class="carousel-caption d-none d-md-block">
-            <br>
+          <div class="row">
+            <div class="col">
+              <img class="d-block w-100 card-img-top-desktop" src="images/uploads/bares/5c3ecbb94969a2.05990699.png" alt="Barra Rosa">
+              <div class="carousel-caption d-none d-md-block">
+                <br>
+              </div>
+            </div>
+            <div class="col d-block align-center">
+              <div class="card w-75">
+                <div class="card-header card-title" style="background-color: rgba(255, 115, 119,0.5); margin: 0px;">
+                  BARRA ROSA
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Caguamas ilimitadas</h5>
+                  <p class="card-text text-justify">Barra Rosa presenta una promoción especial, <strong>caguamas ilimitadas</strong> con un costo de $100 para mujeres
+                    y $200 para hombres. Es válida de 2:00 PM a 2:00 AM.
+                  </p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item link-color">
+                      <i class="fas fa-calendar-day"></i> Jueves
+                     </li>
+                    <li class="list-group-item link-color">
+                      <i class="fab fa-facebook-square"> <a href="https://www.facebook.com/barrarosabar/"> Barra Rosa Bar</a></i>
+                    </li>
+                    <li class="list-group-item link-color">
+                      <i class="fas fa-map-marker-alt"> <a href="https://goo.gl/maps/XUcbQ7fDiJN2"> Plaza Sol</a></i>
+                     </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="images/uploads/bares/5c3e962e565db9.07334868.jpeg"  style="width: 100%;
-    height: 70vw;
-    object-fit: cover;" alt="Diecinueve">
-          <div class="carousel-caption d-none d-md-block">
-            <br>
+          <div class="row">
+            <div class="col">
+              <img class="d-block w-100 card-img-top-desktop" src="images/uploads/bares/5c3e962e565db9.07334868.jpeg" alt="DIECINUEVE">
+              <div class="carousel-caption d-none d-md-block">
+                <br>
+              </div>
+            </div>
+            <div class="col d-block align-center">
+              <div class="card w-75">
+                <div class="card-header card-title text-light" style="background-color: rgb(183, 149, 13); margin: 0px;">
+                  DIECINUEVE SNACK + BAR
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Promoción en tarros</h5>
+                  <p class="card-text text-justify">Diecinueve ofrece una promoción exclusiva de <b>3 tarros</b> de cerveza claro u obscura
+                    por $50 pesos los días Martes y Miércoles.
+                  </p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item link-color">
+                      <i class="fas fa-calendar-day"></i> Martes, Miércoles
+                     </li>
+                    <li class="list-group-item link-color">
+                      <i class="fab fa-facebook-square"> <a href="https://www.facebook.com/bardiecinueve/"> Diecinueve Snack + Bar</a></i>
+                    </li>
+                    <li class="list-group-item link-color">
+                      <i class="fas fa-map-marker-alt"> <a href="https://goo.gl/maps/hgbRn92BSiv">Reforma, 91919 Veracruz, Ver.</a></i>
+                     </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="images/uploads/restaurantes/5c3f6b9f6bff24.96325589.jpg"  style="width: 100%;
-    height: 70vw; object-fit: cover;" alt="Mariscos">
-          <div class="carousel-caption d-none d-md-block">
-            <!-- <h5 class="bg-dark d-inline-block">Mariscos en Mardel</h5> -->
-            <br>
-            <!-- <p class="bg-dark d-inline-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p> -->
+
+          <div class="row">
+            <div class="col">
+              <img class="d-block w-100 card-img-top-desktop" src="images/uploads/restaurantes/5c3f6b9f6bff24.96325589.jpg" alt="HOOK">
+              <div class="carousel-caption d-none d-md-block">
+                <br>
+              </div>
+            </div>
+            <div class="col d-block align-center">
+              <div class="card w-75">
+                <div class="card-header card-title text-muted" style="background-color: #CEEEF5; margin: 0px;">
+                  HOOK FISH BAR & RAW CLAMS
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Hamburguesas al 2 x 1</h5>
+                  <p class="card-text text-justify">¿Hambre? Además de deliciosos mariscos, Hook Fishbar Boca tiene una promoción en hamburguesas al 2 x 1
+                    que no puedes dejar pasar.
+                  </p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item link-color">
+                      <i class="fas fa-calendar-day"></i> Lunes
+                     </li>
+                    <li class="list-group-item link-color">
+                      <i class="fab fa-facebook-square"> <a href="https://www.facebook.com/HookBoca/">Hook Fishbar Boca</a></i>
+                    </li>
+                    <li class="list-group-item link-color">
+                      <i class="fas fa-map-marker-alt"> <a href="https://goo.gl/maps/JyCahqt68Jv">Blvd. Manuel Ávila Camacho 12, Costa de Oro</a></i>
+                     </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

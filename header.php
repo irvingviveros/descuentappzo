@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Promos Veracruz - Boca del Río</title>
+  <meta name="google-site-verification" content="GA7Ejd9MYKlVcevX6Qdwed_Va7L1Y6mvYHPQoHplc-M" />
   <!-- SLICK (CAROUSEL)-->
   <link rel="stylesheet" href="slick/slick.css">
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
