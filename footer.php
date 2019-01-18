@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col">
           <p class="text-center mt-2 mb-1">*Las promociones pueden cambiar sin previo aviso.</p>
-          <span> <a class="text-white" href="politicas.php"><p class="text-center mt-2 mb-1">Políticas de privacidad</p></a> </span>
+          <span> <a class="text-white" href="politicas.php"><p class="text-center mt-2 mb-1">Política de privacidad</p></a> </span>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 require "header.php";
-require 'includes/dbh.inc.php';
+require '../includes/dbh.inc.php';
 ?>
 
 <body>

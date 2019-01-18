@@ -1,6 +1,6 @@
 <?php
 require "header.php";
-require 'includes/dbh.inc.php';
+require '../includes/dbh.inc.php';
 ?>
 
 <style media="screen">
@@ -166,7 +166,7 @@ require 'includes/dbh.inc.php';
     <div class="slideshow">
 
       <?php
-        include 'includes/cardr.inc.php';
+        include '../includes/cardr.inc.php';
        ?>
 
     </div>
@@ -182,7 +182,7 @@ require 'includes/dbh.inc.php';
     <div class="slideshow">
 
       <?php
-        include 'includes/cardc.inc.php';
+        include '../includes/cardc.inc.php';
        ?>
 
     </div>
@@ -198,7 +198,7 @@ require 'includes/dbh.inc.php';
     <div class="slideshow">
 
       <?php
-        include 'includes/cardb.inc.php';
+        include '../includes/cardb.inc.php';
        ?>
 
     </div>

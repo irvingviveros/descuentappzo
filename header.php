@@ -26,6 +26,16 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:500,700" rel="stylesheet">
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132733118-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132733118-1');
+</script>
+
 </head>
 
 <header>
@@ -35,14 +45,14 @@
         <i class="fa fa-bars"></i>
       </span>
     </button>
-    <a class="navbar-brand" href="index.php"> <img src="images/logo/logoWhite.png" alt="Descuentappzo logo" height="32" width="32"></a>
+    <a class="navbar-brand" href="http://www.proday.mx"> <img src="images/logo/logoWhite.png" alt="Descuentappzo logo" height="32" width="32"></a>
     <div class=""></div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
-          <a class="nav-link text-white" href="index.php">Inicio</a>
+          <a class="nav-link text-white" href="http://proday.mx">Inicio</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -73,7 +83,7 @@
           <a class="nav-link text-white" href="#">Postres y café</a>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link text-white" href="newpromo.php">Agregar promoción</a>
+          <a class="nav-link text-white" href="">Agregar promoción (Próximamente)</a>
         </li>
       </ul>
     </div>
