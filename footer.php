@@ -15,8 +15,16 @@
       </div>
       <div class="row">
         <div class="col">
-          <p class="text-center mt-2 mb-1">*Las promociones pueden cambiar sin previo aviso.</p>
-          <span> <a class="text-white" href="politicas.php"><p class="text-center mt-2 mb-1">Política de privacidad</p></a> </span>
+          <p class="text-center mt-2 mb-1">Las promociones pueden cambiar sin previo aviso.</p>
+          <div class="row">
+            <div class="col">
+              <span class=""> <a class="text-white" href="politicas.php"><p class="text-center mt-2 mb-1">Política de privacidad</p></a> </span>
+            </div>
+            <div class="col">
+              <span class=""> <a class="text-white" href="terminos.php"><p class="text-center mt-2 mb-1">Términos y condiciones</p></a> </span>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>

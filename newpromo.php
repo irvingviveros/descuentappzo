@@ -11,7 +11,7 @@ require '../includes/dbh.inc.php';
   <?php echo 'Versión actual de PHP: ' . phpversion();
  ?>
 
-  <form action="../includes/addp.inc.php" method="post" enctype="multipart/form-data">
+  <form action="includes/addp.inc.php" method="post" enctype="multipart/form-data">
     <div class="container form-group col-md-5 mt-4">
       <input type="text" class="form-control" name="nomN" maxlength="18" placeholder="Nombre del negocio" required>
     </div>

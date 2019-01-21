@@ -1,66 +1,7 @@
 
-          <div class="carousel-item col-md-4">
-            <div class="card">
-              <img class="card-img-top img-fluid" src="images/food2.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">LE VLÚ</h4>
-                <div class="card-header">
-                  Hamburguesa y malteada por $73
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item list-group-center"></i>Viernes</li>
-                  <div class="list-group-item">
-                    <div class="row">
-                      <div class="col">
-                        <div class="row justify-content-center">
-                            <i class="fab fa-facebook-square"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Facebook</span>
-                        </div>
-                      </div>
-                      <div class="col border-left">
-                        <div class="row justify-content-center">
-                          <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="row justify-content-center">
-                          <span>Ubicación</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          SELECT n.*, p.* d.*  FROM negocio AS n
-          INNER JOIN promocion AS p ON n.id_p1 = p.id_p
-          INNER JOIN dia AS d ON p.id_d1 = id_d
-          WHERE n.tipo_n = 'bar' AND p.id_d1 = 'Lunes'
-
-          Que el tipo de negocio sea bar y el día sea lunes.
-
-          <?php
-              $sql = "SELECT * FROM negocio;";            //consulta
-              $result = mysqli_query($conn, $sql);          //la consulta conecta a la BD
-              $resultCheck = mysqli_num_rows($result);      //guarda el núm de filas que existen
-              if ($resultCheck > 0 ){                       //comprueba si hay información
-                  while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
-                    echo $row['nombre_n'] . "</br>";
-                  }
-              }
-
-              $actualDay = date("l");
-              echo $actualDay;
-           ?>
-
-           CREATE TABLE negocio (
-id_n int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-nombre_n varchar(18) NOT NULL,
-tipo_n varchar(11) NOT NULL,
-dir_n text NOT NULL,
-face_n text NOT NULL,
-id_p1 int(11) NOT NULL,
-CONSTRAINT fk_ip FOREIGN KEY (id_p1)  REFERENCES promocion(id_p)
-)
+<div class="slide">
+  <div class="contenedor">
+<div class="card card-s">
+  <img class="card-img-middle img-fluid" src="no.png" alt="Card image cap">
+</div>
+</div>

@@ -11,9 +11,9 @@ if (isset($_POST['addp-submit'])) {
   $faceNegocio = mysqli_real_escape_string($conn, $_POST['faceN']);            //enlace facebook
   $birthdayPromo = mysqli_real_escape_string($conn, $_POST['birthdayN']);     //es una promoción de cumpleaños?
   //imagen
-  $uploadDirRest = '../images/uploads/restaurantes/';
-  $uploadDirBar = '../images/uploads/bares/';
-  $uploadDirCafe = '../images/uploads/cafes/';
+  $uploadDirRest = 'PromoApp/images/uploads/restaurantes/';
+  $uploadDirBar = 'PromoApp/images/uploads/bares/';
+  $uploadDirCafe = 'PromoApp/images/uploads/cafes/';
   $file = $_FILES['file'];
   $fileName = $_FILES['file']['name'];
   $fileTmpName = $_FILES['file']['tmp_name'];
@@ -32,20 +32,20 @@ if (isset($_POST['addp-submit'])) {
         if ($tipoNegocio == "restaurante"){
           $fileDestination = $uploadDirRest.$fileNameNew;
           move_uploaded_file($fileTmpName, $fileDestination);
-          $fileDestinationFinal = 'images/uploads/restaurantes/'.$fileNameNew;
+          $fileDestinationFinal = 'PromoApp/images/uploads/restaurantes/'.$fileNameNew;
         } else if ($tipoNegocio == "bar"){
           $fileDestination = $uploadDirBar.$fileNameNew;
           move_uploaded_file($fileTmpName, $fileDestination);
-          $fileDestinationFinal = 'images/uploads/bares/'.$fileNameNew;
+          $fileDestinationFinal = 'PromoApp/images/uploads/bares/'.$fileNameNew;
         } else if ($tipoNegocio == "cafe"){
           $fileDestination = $uploadDirCafe.$fileNameNew;
           move_uploaded_file($fileTmpName, $fileDestination);
-          $fileDestinationFinal = 'images/uploads/cafes/'.$fileNameNew;
+          $fileDestinationFinal = 'PromoApp/images/uploads/cafes/'.$fileNameNew;
         }
 
         $sql = "INSERT INTO images (nom_i, dir_i) VALUES ('$fileNameNew', '$fileDestinationFinal');";
         if (mysqli_query($conn, $sql)) {
-            header("Location: ../newpromo.php?newpromo=success");
+            header("Location: PromoApp/newpromo.php?newpromo=success");
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
@@ -63,7 +63,7 @@ if (isset($_POST['addp-submit'])) {
   //validaciones
   if (empty($nombreNegocio) || empty($tipoNegocio) || empty($tituloPromo) ||
         empty($diaPromo) || empty($direccionNegocio) || empty($faceNegocio)){
-    header("Location: ../newpromo.php?error=emptyfields&nomN=".$nombreNegocio."&titP=".$tituloPromo);
+    header("Location: PromoApp/newpromo.php?error=emptyfields&nomN=".$nombreNegocio."&titP=".$tituloPromo);
     exit();
   }
 
@@ -74,7 +74,7 @@ if (isset($_POST['addp-submit'])) {
   $sql .= "INSERT INTO negocio (nombre_n, tipo_n, dir_n, face_n, id_p1) VALUES ('$nombreNegocio', '$tipoNegocio', '$direccionNegocio', '$faceNegocio', last_insert_id());";
 
   if (mysqli_multi_query($conn, $sql)) {
-      header("Location: ../newpromo.php?newpromo=success");
+      header("Location: PromoApp/newpromo.php?newpromo=success");
   } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
@@ -83,6 +83,6 @@ if (isset($_POST['addp-submit'])) {
 }
 //impedir que el usuario acceda a esta página sin haber clickeado el botón de sign up
 else {
-  header("Location: ../newpromo.php");
+  header("Location: PromoApp/newpromo.php");
   exit();
 }

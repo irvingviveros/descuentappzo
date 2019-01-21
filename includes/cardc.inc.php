@@ -1,4 +1,4 @@
-<?php
+images/nopromo.png<?php
     $actualDay = date("l");     //día actual
     if ($actualDay == 'Monday'){
 
@@ -21,6 +21,14 @@
           //run parameters inside database
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
+
+          if (mysqli_num_rows($result) == 0){
+            echo '  <div class="slide">
+                      <div class="contenedor">
+                        <img src="images/nopromo.png" alt="Card image cap">
+                      </div>
+                    </div>';
+          }
 
           while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
@@ -92,6 +100,14 @@
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
 
+          if (mysqli_num_rows($result) == 0){
+            echo '  <div class="slide">
+                      <div class="contenedor">
+                        <img src="images/nopromo.png" alt="Card image cap">
+                      </div>
+                    </div>';
+          }
+
           while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
             echo '
@@ -161,6 +177,14 @@
           //run parameters inside database
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
+
+          if (mysqli_num_rows($result) == 0){
+            echo '  <div class="slide">
+                      <div class="contenedor">
+                        <img src="images/nopromo.png" alt="Card image cap">
+                      </div>
+                    </div>';
+          }
 
           while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
@@ -232,6 +256,14 @@
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
 
+          if (mysqli_num_rows($result) == 0){
+            echo '  <div class="slide">
+                      <div class="contenedor">
+                        <img src="images/nopromo.png" alt="Card image cap">
+                      </div>
+                    </div>';
+          }
+
           while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
             echo '
@@ -301,6 +333,14 @@
           //run parameters inside database
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
+
+          if (mysqli_num_rows($result) == 0){
+            echo '  <div class="slide">
+                      <div class="contenedor">
+                        <img src="images/nopromo.png" alt="Card image cap">
+                      </div>
+                    </div>';
+          }
 
           while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
@@ -372,6 +412,14 @@
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
 
+          if (mysqli_num_rows($result) == 0){
+            echo '  <div class="slide">
+                      <div class="contenedor">
+                        <img src="images/nopromo.png" alt="Card image cap">
+                      </div>
+                    </div>';
+          }
+
           while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
             echo '
@@ -441,6 +489,14 @@
           //run parameters inside database
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
+
+          if (mysqli_num_rows($result) == 0){
+            echo '  <div class="slide">
+                      <div class="contenedor">
+                        <img src="images/nopromo.png" alt="Card image cap">
+                      </div>
+                    </div>';
+          }
 
           while($row = mysqli_fetch_assoc($result)){                                  //desplegará la info de la bd si es que aún hay
 
